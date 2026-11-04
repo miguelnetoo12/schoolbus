@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SchoolBus – Rotas Escolares</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="side" id="side" aria-label="Menu principal">
+    <a class="brand" href="#painel" data-brand>
+      <span class="brand-mark"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="15" rx="2.5"/><path d="M4 11h16M4 7h16M8 18v2.5M16 18v2.5"/><circle cx="8" cy="14.5" r="1"/><circle cx="16" cy="14.5" r="1"/></svg></span>
+      <span class="brand-txt"><span class="brand-name">SchoolBus</span><span class="brand-sub">Rotas Escolares</span></span>
+    </a>
+    <nav class="nav" id="nav"></nav>
+    <div class="side-foot">
+      <div class="escolar" aria-hidden="true">ESCOLAR</div>
+      <p class="side-note">Gestão de transporte escolar · dados protegidos conforme a LGPD</p>
+    </div>
+  </aside>
+  <div class="scrim" data-act="closeNav"></div>
+  <div class="mainwrap">
+    <header class="top" id="top">
+      <button class="icon-btn hamb" type="button" data-act="openNav" aria-label="Abrir menu"></button>
+      <div class="grow"><span class="dbstate" id="dbstate"><span class="dot wait"></span><span class="lbl">Conectando ao banco de dados…</span></span></div>
+      <div class="relpos" id="clockwrap"></div>
+      <span id="rolewrap"></span>
+      <button class="icon-btn" type="button" id="bell" data-act="go" data-id="avisos" aria-label="Avisos"></button>
+      <div class="me" id="me"></div>
+      <span id="logoutwrap"></span>
+    </header>
+    <main id="main" tabindex="-1"></main>
+  </div>
+</div>
+
+<!-- Aparece só se os arquivos de css/js não forem encontrados (o script.js remove esta caixa) -->
+<div id="aviso-arquivos" style="position:fixed;inset:0;z-index:999;background:#F2F5FB;color:#0C1934;font:16px/1.5 system-ui,sans-serif;padding:32px 20px;overflow:auto">
+  <div style="max-width:620px;margin:0 auto">
+    <h1 style="font-size:24px;margin:0 0 12px">O SchoolBus não encontrou os arquivos do sistema</h1>
+    <p>Os arquivos precisam estar nesta estrutura de pastas, ao lado do <b>index.html</b>:</p>
+    <pre style="background:#fff;border:1px solid #D6DFEE;border-radius:10px;padding:14px;font-size:14px">schoolbus/
+├── index.html
+├── css/
+│   └── style.css
+└── js/
+    ├── config.js
+    ├── dados-iniciais.js
+    ├── banco-local.js
+    └── script.js</pre>
+    <p>Descompacte o <b>schoolbus.zip</b> inteiro e abra o <b>index.html</b> de dentro da pasta, de preferência com o Live Server do VS Code.</p>
+  </div>
+</div>
+
+<div id="modal-root"></div>
+<div id="toasts" aria-live="polite"></div>
+
+<!-- A ordem importa: configuração → dados iniciais → banco local → sistema -->
+<script src="js/config.js"></script>
+<script src="js/dados-iniciais.js"></script>
+<script src="js/banco-local.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
